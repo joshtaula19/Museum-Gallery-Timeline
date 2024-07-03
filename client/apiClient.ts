@@ -1,6 +1,8 @@
 import request from 'superagent'
+import type { Museum } from '../models/museum'
 
-export async function getGreeting(): Promise<string> {
-  const res = await request.get('/api/v1/greeting')
-  return res.body.greeting
+export async function fetchArtists() {
+  const res = await request.get('/api/v1/artists')
+  
+  return res.body as Museum
 }
