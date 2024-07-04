@@ -1,11 +1,13 @@
-import Artist from './ArtistList'
+import ArtistList from './ArtistList.tsx'
 
 function App() {
-  
   return (
-  <>
-  <Artist />
-  </>
+    <>
+      <div className="App">
+        <h1>Museum Gallery Timeline</h1>
+        <ArtistList />
+      </div>
+    </>
   )
 }
 

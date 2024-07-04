@@ -1,12 +1,16 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
-import { fetchArtists } from "../apiClient"
+import { fetchArtist } from '../apiClient'
 
-export default function PokemonDetail() {
+export default function ArtistDetail() {
   const { name } = useParams()
-  const { data: artists, isPending, isError } = useQuery({
+  const {
+    data: artists,
+    isPending,
+    isError,
+  } = useQuery({
     queryKey: ['Artists'],
-    queryFn: () => fetchArtists()
+    queryFn: () => fetchArtist(),
   })
   if (isPending) {
     return <div>Loading...</div>
@@ -16,10 +20,10 @@ export default function PokemonDetail() {
     return <div>Something went wrong...</div>
   }
 
-
   return (
     <div>
-      <h1>{name}</h1>
+      <h1>Artist Info</h1>
+      <p>{}</p>
     </div>
   )
 }
