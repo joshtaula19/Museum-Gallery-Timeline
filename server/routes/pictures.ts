@@ -9,7 +9,7 @@ const token = process.env.TOKEN || ''
 router.get('/', async (req, res) => {
   try {
     const response = await request
-      .get(`https://api.harvardartmuseums.org/person?apikey=${token}`)
+      .get(`https://api.harvardartmuseums.org/image?apikey=${token}`)
       .auth(token, { type: 'bearer' })
     res.json(response.body)
   } catch (e) {

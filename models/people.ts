@@ -1,4 +1,4 @@
-export interface Museum {
+export interface Person {
   info: Info
   records: Record[]
 }
@@ -13,7 +13,6 @@ export interface Info {
 }
 
 export interface Record {
-  records: unknown
   gender: Gender
   displaydate: null | string
   objectcount: number
