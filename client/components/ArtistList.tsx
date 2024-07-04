@@ -24,7 +24,7 @@ export default function ImageList() {
   if (!images || !images.records) {
     return <div>No images data available</div>
   }
-
+  console.log('images: ', images)
   return (
     <Router>
       <Routes>
@@ -35,7 +35,7 @@ export default function ImageList() {
               <div className="timeline">
                 {images.records.map((images) => (
                   <div className={`image-card`} key={images.id}>
-                    <Link to={`/artist/${images.id}}?`}>
+                    <Link to={`/artist/${images.id}}`}>
                       <div
                         className={`image-date left-side container-text text-box`}
                       >

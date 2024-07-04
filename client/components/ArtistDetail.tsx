@@ -8,14 +8,14 @@ export default function ArtistDetail() {
 
   const {
     data: artist,
-    isLoading,
+    isPending,
     isError,
   } = useQuery<Person, Error>({
     queryKey: ['artist', id],
     queryFn: () => fetchArtist(id),
   })
 
-  if (isLoading) {
+  if (isPending) {
     return <div>Loading...</div>
   }
 
@@ -27,7 +27,7 @@ export default function ArtistDetail() {
     <div>
       <h1>Artist Info</h1>
       <p>
-        <strong>Name:</strong> {artist.Record.displayname}
+        <strong>Name:</strong> {artist.record.displayname}
       </p>
       <p>
         <strong>Gender:</strong> {artist.gender}
