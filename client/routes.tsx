@@ -7,6 +7,7 @@ import ArtistDetail from './components/ArtistDetail.tsx'
 export const routes = createRoutesFromElements(
   <Route element={<App />}>
     <Route index element={<ArtistList />} />
+    <Route path="artist/:id" element={<ArtistDetail />} />
     <Route path="image/:id" element={<ArtistDetail />} />
-  </Route>
+  </Route>,
 )
