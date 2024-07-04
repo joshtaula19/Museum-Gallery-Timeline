@@ -19,10 +19,10 @@ export async function fetchImage(): Promise<Image> {
 
 export async function fetchArtist(personid: number): Promise<Person> {
   try {
-    const per = await request
-      .get(`${serverURL}/person/${personid}?`)
-      .query({ apiKey: apiKey })
-    return per.body as Person
+    const res = await request.get(
+      `${serverURL}/person/${personid}?apikey=${apiKey}`,
+    )
+    return res.body as Person
   } catch (error) {
     console.error('Error fetching artists:', error)
     throw error

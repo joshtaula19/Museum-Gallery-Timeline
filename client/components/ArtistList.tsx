@@ -4,7 +4,6 @@ import { Image } from '../../models/image.ts'
 import '../../main.css'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
 import ArtistDetail from './ArtistDetail.tsx'
-// import ArtistDetail from './ArtistDetail.tsx'
 
 export default function ImageList() {
   const {
@@ -33,18 +32,26 @@ export default function ImageList() {
           path="/"
           element={
             <>
-              <h1>Timeline:</h1>
-              {images.records.map((images) => (
-                <div className="image-card" key={images.id}>
-                  <Link to={`/artist/${images.idsid}}?`}>
-                    <img
-                      className="image"
-                      src={images.baseimageurl}
-                      alt="artistImages"
-                    />
-                  </Link>
-                </div>
-              ))}
+              <div className="timeline">
+                {images.records.map((images) => (
+                  <div className={`image-card`} key={images.id}>
+                    <Link to={`/artist/${images.id}}?`}>
+                      <div
+                        className={`image-date left-side container-text text-box`}
+                      >
+                        {formatDate(images.date)}
+                      </div>
+                    </Link>
+                    <Link to={`/artist/${images.id}}?`}>
+                      <img
+                        className="image timeline  container right-side"
+                        src={images.baseimageurl}
+                        alt="artistImages"
+                      />
+                    </Link>
+                  </div>
+                ))}
+              </div>
             </>
           }
         />
@@ -52,4 +59,14 @@ export default function ImageList() {
       </Routes>
     </Router>
   )
+}
+
+export function formatDate(date: Date | null): string {
+  if (!date) return 'No date available'
+  const options: Intl.DateTimeFormatOptions = {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  }
+  return new Date(date).toLocaleDateString(undefined, options)
 }
