@@ -35,6 +35,28 @@ export interface Record {
   height: number
 }
 
+export interface ImageDetails {
+  id:              number;
+  imageid:         number;
+  fileid:          number;
+  idsid:           number;
+  caption:         null;
+  alttext:         null;
+  description:     null;
+  copyright:       string;
+  iiifbaseuri:     string;
+  baseimageurl:    string;
+  renditionnumber: string;
+  date:            Date;
+  height:          number;
+  width:           number;
+  accesslevel:     number;
+  format:          string;
+  technique:       string;
+  lastupdate:      string;
+}
+
+
 export interface Color {
   color: string
   spectrum: Spectrum

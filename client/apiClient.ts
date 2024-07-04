@@ -1,6 +1,6 @@
 import request from 'superagent'
 // import type { Museum } from '../models/museum'
-import type { Image } from '../models/image.ts'
+import type { Image, ImageDetails } from '../models/image.ts'
 import type { Person } from '../models/people.ts'
 // import router from '../server/routes/artists.ts'
 
@@ -9,7 +9,7 @@ const apiKey = import.meta.env.VITE_API_KEY
 
 export async function fetchImage(): Promise<Image> {
   try {
-    const res = await request.get(`${serverURL}/image?apikey=${apiKey}`)
+    const res = await request.get(`${serverURL}/image?apikey=${apiKey}&size=100&sortorder=desc`)
     return res.body as Image
   } catch (error) {
     console.error('Error fetching images:', error)
@@ -17,12 +17,12 @@ export async function fetchImage(): Promise<Image> {
   }
 }
 
-export async function fetchArtist(personid: number): Promise<Person> {
+export async function fetchImageDetails(imageId: number): Promise<ImageDetails> {
   try {
     const res = await request.get(
-      `${serverURL}/person/${personid}?apikey=${apiKey}`,
+      `${serverURL}/image/${imageId}?apikey=${apiKey}`,
     )
-    return res.body as Person
+    return res.body as ImageDetails
   } catch (error) {
     console.error('Error fetching artists:', error)
     throw error

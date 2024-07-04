@@ -42,7 +42,7 @@ export default function ImageList() {
                         {formatDate(images.date)}
                       </div>
                     </Link>
-                    <Link to={`/artist/${images.id}}?`}>
+                    <Link to={`/image/${images.id}`}>
                       <img
                         className="image timeline  container right-side"
                         src={images.baseimageurl}
@@ -55,7 +55,7 @@ export default function ImageList() {
             </>
           }
         />
-        <Route path="/artist/:id" element={<ArtistDetail />} />
+        <Route path="/image/:id" element={<ArtistDetail />} />
       </Routes>
     </Router>
   )
