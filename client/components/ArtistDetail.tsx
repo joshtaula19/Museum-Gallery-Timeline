@@ -1,29 +1,41 @@
 import { useParams } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { fetchArtist } from '../apiClient'
+import { Person } from '../../models/people'
 
 export default function ArtistDetail() {
-  const { name } = useParams()
+  const { id } = useParams<{ id: string }>()
+
   const {
-    data: artists,
-    isPending,
+    data: artist,
+    isLoading,
     isError,
-  } = useQuery({
-    queryKey: ['Artists'],
-    queryFn: () => fetchArtist(),
+  } = useQuery<Person, Error>({
+    queryKey: ['artist', id],
+    queryFn: () => fetchArtist(id),
   })
-  if (isPending) {
+
+  if (isLoading) {
     return <div>Loading...</div>
   }
 
-  if (isError) {
+  if (isError || !artist) {
     return <div>Something went wrong...</div>
   }
 
   return (
     <div>
       <h1>Artist Info</h1>
-      <p>{}</p>
+      <p>
+        <strong>Name:</strong> {artist.Record.displayname}
+      </p>
+      <p>
+        <strong>Gender:</strong> {artist.gender}
+      </p>
+      <p>
+        <strong>Display Date:</strong> {artist.displaydate}
+      </p>
+      <p></p>
     </div>
   )
 }

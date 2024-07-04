@@ -1,4 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .image {
   height: 150px;
   width: 150px;
+  border-radius: 20%;
+}
+
+body {
+  background-color: rgb(255, 249, 223);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+  font-size: 50px;
+  font-style: italic;
+  text-shadow: 5px 5px rgb(73, 48, 0);
+}
+
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 50px auto;
+}
+
+.container {
+  position: relative;
+  padding: 0px 0px;
+  animation: movedown 1s linear forwards;
+  opacity: 0;
+}
+@keyframes movedown {
+  0% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.container-text {
+  position: relative;
+  width: 15%;
+  padding: 0px 0px;
+  animation: movedown 1s linear forwards;
+  opacity: 0;
+}
+@keyframes movedown {
+  0% {
+    opacity: 1;
+    transform: translateY(-30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.text-box {
+  background: beige;
+  position: relative;
+  border-radius: 15%;
+  font-size: 15px;
+  margin-right: -3px;
+}
+
+.right-side {
+  left: 55%;
+}
+
+.left-side {
+  left: 33%;
+}
+
+.image-date {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background: #fff;
+  top: 0;
+  left: 50%;
+  margin-left: -3px;
+  z-index: -1;
+  animation: moveline 4s linear forwards;
+}
+@keyframes moveline {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 100%;
+  }
 }
