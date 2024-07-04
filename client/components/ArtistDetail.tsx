@@ -33,7 +33,14 @@ export default function ArtistDetail() {
         alt="artistImages"
       />
       <p>
-        <strong>Name:</strong> {artist.Record.displayname}
+        <strong>Date:</strong> {formatDate(imageDetails.date)}
+      </p>
+      <p>
+        <strong>Description:</strong>{' '}
+        {imageDetails.description ?? 'No description :('}
+      </p>
+      <p>
+        <strong>Caption:</strong> {imageDetails.caption ?? 'No caption :('}
       </p>
       <p>
         <strong>Alt text:</strong> {imageDetails.alttext ?? 'No alt text :('}
