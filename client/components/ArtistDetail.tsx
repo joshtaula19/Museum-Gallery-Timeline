@@ -9,14 +9,14 @@ export default function ArtistDetail() {
 
   const {
     data: imageDetails,
-    isLoading,
+    isPending,
     isError,
   } = useQuery<ImageDetails, Error>({
     queryKey: ['ImageData'],
     queryFn: () => fetchImageDetails(Number(id)),
   })
 
-  if (isLoading) {
+  if (isPending) {
     return <div>Loading...</div>
   }
 
@@ -36,7 +36,8 @@ export default function ArtistDetail() {
         <strong>Date:</strong> {formatDate(imageDetails.date)}
       </p>
       <p>
-        <strong>Description:</strong> {imageDetails.description ?? 'No description :('}
+        <strong>Description:</strong>{' '}
+        {imageDetails.description ?? 'No description :('}
       </p>
       <p>
         <strong>Caption:</strong> {imageDetails.caption ?? 'No caption :('}

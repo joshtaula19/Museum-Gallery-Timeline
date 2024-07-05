@@ -2,8 +2,8 @@ import { fetchImage } from '../apiClient'
 import { useQuery } from '@tanstack/react-query'
 import { Image } from '../../models/image.ts'
 import '../../main.css'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
-import ArtistDetail from './ArtistDetail.tsx'
+import { Link } from 'react-router-dom'
+// import ArtistDetail from './ArtistDetail.tsx'
 
 export default function ImageList() {
   const {
@@ -24,40 +24,28 @@ export default function ImageList() {
   if (!images || !images.records) {
     return <div>No images data available</div>
   }
-
+  console.log('images: ', images)
   return (
-    <Router>
-      <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <div className="timeline">
-                {images.records.map((images) => (
-                  <div className={`image-card`} key={images.id}>
-                    <Link to={`/artist/${images.id}}?`}>
-                      <div
-                        className={`image-date left-side container-text text-box`}
-                      >
-                        {formatDate(images.date)}
-                      </div>
-                    </Link>
-                    <Link to={`/image/${images.id}`}>
-                      <img
-                        className="image timeline  container right-side"
-                        src={images.baseimageurl}
-                        alt="artistImages"
-                      />
-                    </Link>
-                  </div>
-                ))}
+    <>
+      <div className="timeline">
+        {images.records.map((images) => (
+          <div className={`image-card`} key={images.id}>
+            <Link to={`/artist/${images.id}}`}>
+              <div className={`image-date left-side container-text text-box`}>
+                {formatDate(images.date)}
               </div>
-            </>
-          }
-        />
-        <Route path="/image/:id" element={<ArtistDetail />} />
-      </Routes>
-    </Router>
+            </Link>
+            <Link to={`/image/${images.id}`}>
+              <img
+                className="image timeline  container right-side"
+                src={images.baseimageurl}
+                alt="artistImages"
+              />
+            </Link>
+          </div>
+        ))}
+      </div>
+    </>
   )
 }
 
