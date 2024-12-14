@@ -9,11 +9,12 @@ const token = process.env.TOKEN || ''
 router.get('/', async (req, res) => {
   try {
     const response = await request
-      .get(`https://api.harvardartmuseums.org/person?apikey=${token}`)
-      .auth(token, { type: 'bearer' })
+      .get(`https://api.harvardartmuseums.org/person`)
+      .query({ apikey: token })
     res.json(response.body)
   } catch (e) {
-    console.log(e)
+    console.error(e)
+    res.status(500).json({ error: 'Failed to fetch data' })
   }
 })
 
